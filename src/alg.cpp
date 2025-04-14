@@ -54,7 +54,7 @@ int countPairs3(int *arr, int len, int value) {
     if (complement >= arr[i]) {
       if (std::binary_search(arr + i + 1, arr + len, complement)) {
         int first = i + 1;
-        while (first < len && arr[first] == complement) {
+        while (first < len && arr[first] < complement) {
           ++first;
         }
 

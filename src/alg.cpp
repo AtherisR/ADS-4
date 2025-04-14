@@ -1,16 +1,16 @@
 // Copyright 2021 NNTU-CS
-#include <algorithm> 
+#include <algorithm>
 
 int countPairs1(int *arr, int len, int value) {
   int count = 0;
   for (int i = 0; i < len; ++i) {
-    for (int j = 0; j < len; ++j) {
-      if (i != j && arr[i] + arr[j] == value) {
+    for (int j = i + 1; j < len; ++j) {
+      if (arr[i] + arr[j] == value) {
         ++count;
       }
     }
   }
-  return count / 2;
+  return count;
 }
 
 int countPairs2(int *arr, int len, int value) {
@@ -54,7 +54,7 @@ int countPairs3(int *arr, int len, int value) {
     if (complement >= arr[i]) {
       if (std::binary_search(arr + i + 1, arr + len, complement)) {
         int first = i + 1;
-        while (first < len && arr[first] < complement) {
+        while (first < len && arr[first] == complement) {
           ++first;
         }
 
